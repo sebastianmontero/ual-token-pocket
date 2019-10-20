@@ -18,11 +18,6 @@ export class TokenPocket extends Authenticator {
   private tokenPocketIsLoading: boolean = true
   private initError: UALError | null = null
 
-  private readonly supportedChains = {
-    // Token Pocket only supports mainnet
-    aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906: {},
-  }
-
   /**
    * TokenPocket Constructor.
    * @param chains
@@ -33,20 +28,6 @@ export class TokenPocket extends Authenticator {
 
   private isTokenPocketReady(): boolean {
     return tp.isConnected()
-  }
-
-  private supportsAllChains(): boolean {
-    if (this.chains.length < 1) {
-      return false
-    }
-
-    for (const chain of this.chains) {
-      if (!this.supportedChains.hasOwnProperty(chain.chainId)) {
-        return false
-      }
-    }
-
-    return true
   }
 
   /**
@@ -90,7 +71,7 @@ export class TokenPocket extends Authenticator {
    * within the Token Pocket browser provided all chains are supported.
    */
   public shouldRender(): boolean {
-    if (this.supportsAllChains() && this.isTokenPocketReady()) {
+    if (this.isTokenPocketReady()) {
       return true
     }
 

@@ -1,6 +1,6 @@
 {
-  "name": "ual-token-pocket",
-  "version": "0.1.2",
+  "name": "@smontero/ual-token-pocket",
+  "version": "0.1.3",
   "main": "dist/index.js",
   "license": "MIT",
   "author": {
